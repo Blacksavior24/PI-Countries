@@ -1,9 +1,11 @@
 // Importa las action types acá
-import {GET_ALL_PRODUCTS,GET_PRODUCT_DETAIL,CREATE_PRODUCT, DELETE_PRODUCT} from '../actions/index'
+import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL} from '../actions/index'
+
+//import {GET_ALL_COUNTRIES,GET_PRODUCT_DETAIL,CREATE_PRODUCT, DELETE_PRODUCT} from '../actions/index'
 
 const initialState = {
-  products: [],
-  productDetail: {},
+  countries: [],
+  countryDetail: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -11,26 +13,21 @@ const rootReducer = (state = initialState, action) => {
     action.type
     // Acá va tu código:
   ) {
-    case GET_ALL_PRODUCTS:
+    case GET_ALL_COUNTRIES:
       return{
         ...state,
-        products: action.payload
+        countries: action.payload
       }
-    case GET_PRODUCT_DETAIL:
+    case GET_COUNTRY_DETAIL:
       return{
         ...state,
-        productDetail: action.payload
-      }
+        countryDetail: action.payload
+      }/*
     case CREATE_PRODUCT:
       return{
         ...state,
-        products: [...state.products,action.payload]
-      }
-    case DELETE_PRODUCT:
-      return{
-        ...state,
-        products: state.products.filter(product => product.id !== action.payload)
-      }
+        countries: [...state.countries,action.payload]
+      }*/
     default: 
       return state;
   }

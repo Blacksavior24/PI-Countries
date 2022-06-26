@@ -1,17 +1,18 @@
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import LandingPage from './Components/landingpage.jsx/LandingPage';
 import Countries from './Components/countries/Countries'
+import CardDetail from './Components/cardsdetails/CardDetail';
+
 
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
     <Route exact path='/' >
       <LandingPage />
     </Route>
     <Route exact path='/countries' component={Countries}/>
-    </BrowserRouter>
+    <Route exact path='/countries/:id' component={CardDetail}/>
     </div>
   );
 }

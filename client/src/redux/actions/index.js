@@ -1,8 +1,7 @@
 // Aca deben declarar las variables donde tengan el action types.
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
-export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
+//export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
-//export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 // Fijarse que la sintaxis de nuestra Action creator es distinta a lo que venimos haciendo. Esto es
 // debido al uso del middleware "thunk", el cual nos permite trabajar con acciones asincrónicas.
@@ -11,34 +10,31 @@ export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
 // Vas a tener que usar la funcion "dispatch" recibida en la funcion interna para despachar la action que
 // va a llegar a nuestro reducer.
 
-export const getAllProducts = () => {
+export const getAllCountries = () => {
   return async function (dispatch) {
-    // Aca debes hacer la petición a la ruta del back http://localhost:3001/products
-    // Pueden hacer la peticion con fetch o axios (documentación de axios: https://axios-http.com/docs/example)
-    // Aclaración: todas las peticiones al back son asíncronas.
-    let response = await fetch('http://localhost:3001/products')
+    let response = await fetch('http://localhost:3001/countries')
     let data = await response.json()
+    console.log(data.length);
     return dispatch({
-      type: GET_ALL_PRODUCTS,
+      type: GET_ALL_COUNTRIES,
       payload: data
     })
   };
 };
 
-export const getProductDetail = (id) => {
+export const getCountryDetail = () => {
   return async (dispatch) => {
-    // Aca debes hacer la petición a la ruta del back http://localhost:3001/products/:id
-    try{let response = await fetch(`http://localhost:3001/products/${id}`)
+    try{let response = await fetch(`http://localhost:3001/countries/:`)
       let data = await response.json();
       return dispatch({
-        type: GET_PRODUCT_DETAIL,
+        type: GET_COUNTRY_DETAIL,
         payload: data
       })
     }catch(err){
       console.error(err);
     }    
   };
-};
+};/*
 let id= 6;
 // Desde el componente correspondiente ejecutamos esta action creator, pasandole por params las values que vamos a usar para
 export const createProduct = (data)=>{
@@ -50,10 +46,4 @@ export const createProduct = (data)=>{
     }
   };
 };
-
-export const deleteProduct = (id)=>{
-  return{
-    type: DELETE_PRODUCT,
-    payload: id
-  }
-};
+*/
