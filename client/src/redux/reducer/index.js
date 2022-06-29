@@ -1,27 +1,28 @@
 // Importa las action types acá
-import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL} from '../actions/index'
-
-//import {GET_ALL_COUNTRIES,GET_PRODUCT_DETAIL,CREATE_PRODUCT, DELETE_PRODUCT} from '../actions/index'
+//import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL} from '../actions/index'
 
 const initialState = {
   countries: [],
-  countryDetail: [],
+  countriesApi:[],
+  loading: false,
+  detail: [],
+  activdad: [],
+  continent: []
+
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (  
-    action.type
-    // Acá va tu código:
-  ) {
-    case GET_ALL_COUNTRIES:
+//actios = {type, payload}
+const rootReducer = (state = initialState, {type, payload}) => {
+  switch(type){
+    case 'GET_ALL_COUNTRIES':
       return{
         ...state,
-        countries: action.payload
+        countries: payload
       }
-    case GET_COUNTRY_DETAIL:
+    case 'GET_COUNTRY_DETAIL':
       return{
         ...state,
-        countryDetail: action.payload
+        detail: payload
       }/*
     case CREATE_PRODUCT:
       return{

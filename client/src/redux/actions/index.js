@@ -1,3 +1,4 @@
+import axios from "axios";
 // Aca deben declarar las variables donde tengan el action types.
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 //export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
@@ -16,22 +17,22 @@ export const getAllCountries = () => {
     let data = await response.json()
     console.log(data.length);
     return dispatch({
-      type: GET_ALL_COUNTRIES,
+      type: 'GET_ALL_COUNTRIES',
       payload: data
     })
   };
 };
 
-export const getCountryDetail = () => {
-  return async (dispatch) => {
-    try{let response = await fetch(`http://localhost:3001/countries/:`)
-      let data = await response.json();
+export const getCountryDetail = (id) => {
+  return async function(dispatch){
+    try{
+      let response = await axios(`http://localhost:3001/countries/${id}`)
       return dispatch({
-        type: GET_COUNTRY_DETAIL,
-        payload: data
+        type: 'GET_COUNTRY_DETAIL',
+        payload: response.data
       })
     }catch(err){
-      console.error(err);
+      console.error("mal id xD"+err);
     }    
   };
 };/*

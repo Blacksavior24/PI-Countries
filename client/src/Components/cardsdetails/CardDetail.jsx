@@ -1,27 +1,49 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountryDetail } from '../../redux/actions';
-// Fijense en los test que SI O SI tiene que ser un functional component, de otra forma NO VAN A PASAR LOS TEST
-// Deben usar Hooks para que los test pasen (lease tambien lo de react-redux).
-// No realicen un destructuring de ellos, sino que utilicenlos de la siguiente forma 'React.useState' y 'React.useEffect' ,
-// Si no lo hacen asi los test no van a correr.
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-const CardDetail = () => {
+const CardDetail = (props) => {
     const dispatch = useDispatch();
-    React.useEffect (()=>{
-        dispatch(getCountryDetail())
-    }, [dispatch])
-
-    const data = useSelector((state)=>state.countries)
+    const {id} = props.match.params;
+    const data = useSelector((state)=>state.detail)
+    
+    if(!data.length){
+        dispatch(getCountryDetail(id));
+    }
+    let aux;
+    if(data){
+        aux = data[0]?.activities.map(a=>{
+            return(
+                <div key={a.id}>
+                    <h2> Activity </h2>
+                    <h4> Name: {a.name} </h4>
+                    <h4> Difficulty: {a.difficulty} </h4>
+                    <h4> Duration: {a.duration} </h4>
+                    <h4> Season: {a.season} </h4> 
+                </div>
+            )
+        })
+    }
     return (
-        <div>
-            <h4>{data.id}</h4>
-            <h4>Nombre: {data.name}</h4>
-            <img src={data.images_flags} alt="bandera" />
-            <h4>Continente:{data.continent}</h4>
-            <h4>Popularidad: {data.population}</h4>
-            <h4>Actividades: {data.activities}</h4>
-        </div>
+        <div >
+            {data.map(e =>(
+                <div>
+                <h4>{e.name}</h4>
+                <img src={e.images_flags} alt="" />
+                <h4>Continente:{e.continent}</h4>
+                <h4>Popularidad: {e.population}</h4>
+                <div>{aux.length?
+                    aux: <h5>No existen actividades</h5>
+                }
+                </div>
+                </div>
+            ))}
+
+    </div>
+
+
     )
 }
 
