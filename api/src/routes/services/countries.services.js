@@ -1,36 +1,39 @@
 const {Country , Activity } = require('../../db')
+const axios = require('axios');
 
 
-
-const countriesDB = async () =>{
-
-    try {
-        const Paises = await Country.findAll({
-            include: [Activity]
-        })
-        return Paises;
-    } catch (error) {
-        console.log('Error en el controlador'+error);
-    }
-    
+const getApiInfo = async () =>{
+    const { data } = await axios('https://restcountries.com/v3/all');
+    const api = await data.map(country => { 
+        
+        return {
+           id: country.cca3,
+           name: country.name.common,
+           flag: country.flags[0],
+           continent: country.continents[0],
+           capital: country.capital?.[0] ,
+           subregion: country.subregion,
+           area: country.area,
+           poblation: country.population,
+        }
+    });
+    const result = await Country.bulkCreate(api)
+    return result;
 }
 
-
-//traemos el pais unico con el id buscando por la llave primaria 
-const obtenerCountry = async (id) =>{
-    try {
-        const pais = await Country.findByPk(id,{
-            include: [Activity]
-        });
-        return pais;
-    } catch (error) {
-        console.log('Error en obtener un unico pais'+error);
-    }
- 
+const getDbInfo = async() => { 
+    return await Country.findAll({
+        include: {
+            model: Activity,
+            attribute: ['name', 'difficulty', 'duration', 'season'],
+            through: {
+                attributes: []
+            }
+        }
+    })
 }
-
 
 module.exports = {
-    obtenerCountry,
-    countriesDB,
+    getApiInfo,
+    getDbInfo,
 }

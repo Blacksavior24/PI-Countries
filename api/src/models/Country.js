@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    images_flags: {
+    flag: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -23,16 +23,18 @@ module.exports = (sequelize) => {
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'no capital'
     },
     subregion: {
       type: DataTypes.STRING
     },
     area: {
-      type: DataTypes.INTEGER
+      type: DataTypes.FLOAT
     },
-    population: {
-      type: DataTypes.INTEGER
+    poblation: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
 };
