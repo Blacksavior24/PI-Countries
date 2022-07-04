@@ -3,19 +3,16 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {getCountryDetail} from '../../redux/actions/index';
 
-const Country = (props) => {
-  const dispatch = useDispatch();
-  return (
-        <Link to={`/countries/${props.id}`} >
-    <div key={props.id} onClick={()=>dispatch(getCountryDetail(props.id))}>
-        <img src={props.images_flags} alt={props.images_flags} />
-        <h4>{props.name}</h4>
-        <p>Continent: {props.continent}</p>
-        <p>Population: {props.population}</p> 
-           
-    </div>
-    </Link>
-  );
-};
-
-export default Country;
+export default function Country({ id,name, flag, continent, poblation}) {
+  const dispatch = useDispatch()
+  return(
+          <Link className='link' to = {`/countries/${id}`} >
+      <div className='card' key={id} onClick={ () => dispatch(getCountryDetail(id))}>
+          <h4 className='name'> {name} </h4>
+          <h5 className='name'> {continent} </h5>
+          <h5 className='name'> {poblation} </h5>
+          <img src={flag} alt="imagen no encontrada" width='145px' height='145px' className='image' />
+      </div>
+          </Link>        
+  )
+}

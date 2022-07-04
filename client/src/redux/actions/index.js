@@ -1,15 +1,4 @@
 import axios from "axios";
-// Aca deben declarar las variables donde tengan el action types.
-export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
-//export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
-export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
-
-// Fijarse que la sintaxis de nuestra Action creator es distinta a lo que venimos haciendo. Esto es
-// debido al uso del middleware "thunk", el cual nos permite trabajar con acciones asincrónicas.
-// Necesitamos hacer uso de este middleware ya que nuestras peticiones al back siempre son asincrónicas,
-// por lo tanto, necesitamos ese "delay" para despachar nuestra action hasta que la data nos llegue.
-// Vas a tener que usar la funcion "dispatch" recibida en la funcion interna para despachar la action que
-// va a llegar a nuestro reducer.
 
 export const getAllCountries = () => {
   return async function (dispatch) {
@@ -32,19 +21,50 @@ export const getCountryDetail = (id) => {
         payload: response.data
       })
     }catch(err){
-      console.error("mal id xD"+err);
+      //console.error("mal id xD"+err);
     }    
   };
-};/*
-let id= 6;
-// Desde el componente correspondiente ejecutamos esta action creator, pasandole por params las values que vamos a usar para
-export const createProduct = (data)=>{
-  return {
-    type: CREATE_PRODUCT,
-    payload:{
-      id: id++,
-      ...data
-    }
-  };
 };
-*/
+
+export function getCountriesName (name){
+  return async function (dispatch){
+      try{
+          const r = await axios (`http://localhost:3001/countries?name=${name}`)
+          return dispatch({type: 'GET_COUNTRIES_NAME', payload: r.data})
+      }
+      catch(err){
+          //console.log('no existe el nombre')
+      }
+  }
+};
+
+export function addActivity (activity){
+  return async function (dispatch){
+      
+      try{
+          const data = await axios.post('http://localhost:3001/activity', activity)
+          return dispatch({type:'ADD_ACTIVITY', payload: data.data})
+      }
+      catch(err){
+          //console.log(err)
+         
+      }
+  }
+};
+
+export  function getActivity (){ 
+  return async function (dispatch){
+      let respuesta
+      try{ 
+          respuesta = await axios.get('http://localhost:3001/activity')
+          
+      }
+      catch(err){
+          console.log(err)
+      }
+      if(respuesta){
+          respuesta = await respuesta.data
+          return dispatch({type:'GET_ACTIVITY', payload: respuesta })
+      }
+  }
+};

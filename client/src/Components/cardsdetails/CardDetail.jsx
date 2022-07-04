@@ -1,50 +1,66 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getCountryDetail } from '../../redux/actions';
+import React from "react";
+import { useEffect } from "react";
+import { getCountryDetail } from "../../redux/actions/index";
+import {useDispatch, useSelector} from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+//import './cardDetail.css'
 
-const CardDetail = (props) => {
-    const dispatch = useDispatch();
-    const {id} = props.match.params;
-    const data = useSelector((state)=>state.detail)
-    
-    if(!data.length){
+export default function CardDetail (props){
+    const dispatch = useDispatch()
+    const {id} = props.match.params 
+    const countriesDetail = useSelector((state) =>state.detail)
+  
+    if(!countriesDetail.length){
         dispatch(getCountryDetail(id));
     }
-    let aux;
-    if(data){
-        aux = data[0]?.activities.map(a=>{
-            return(
-                <div key={a.id}>
-                    <h2> Activity </h2>
-                    <h4> Name: {a.name} </h4>
-                    <h4> Difficulty: {a.difficulty} </h4>
-                    <h4> Duration: {a.duration} </h4>
-                    <h4> Season: {a.season} </h4> 
-                </div>
-            )
-        })
-    }
-    return (
-        <div >
-            {data.map(e =>(
-                <div>
-                <h4>{e.name}</h4>
-                <img src={e.images_flags} alt="" />
-                <h4>Continente:{e.continent}</h4>
-                <h4>Popularidad: {e.population}</h4>
-                <div>{aux.length?
-                    aux: <h5>No existen actividades</h5>
-                }
-                </div>
-                </div>
-            ))}
+    
+   let act 
+   if (countriesDetail){
+    act =  countriesDetail[0]?.activities.map(a => {
+                return (<div key = {a.id}> 
+                        <h2 className ="card-title"> Activity </h2>
+                        <h4> Name: {a.name} </h4>
+                        <h4> Difficulty: {a.difficulty} </h4>
+                        <h4> Duration: {a.duration} </h4>
+                        <h4> Season: {a.season} </h4> 
+                    </div>) 
+                })
+   } 
+    return(
+        <div className="fondo" >
+        {countriesDetail.map(e => (
+         <div className="detail">
+         <h2  className="card-title"> {e.name}</h2>
+         <div className='detail-img'>
+              <img src={e.flag} className='imagen'  alt="" />
+         </div>
+         <div className='datos'>
+             <div className='container'>
+                 <h4> Continent: {e.continent}</h4>
+             </div>
+             <div className='container'>
+                 <h4> Codigo: {e.id}</h4>
+             </div>
+             <div className='container'>
+                 <h4> Area: {e.area} km </h4>
+             </div>
+             <div className='container'>
+                 <h4> Poblation:  {e.poblation}</h4>
+             </div>
+             </div>
+             <div>{ act.length ?
+             act: <h5> THERE IS NOT ACTIVITIES </h5>}    
+            </div>
+             <div className='btn'>
+     <Link className="link" to='/countries'>
+         <button className='btn-back'>Back</button> 
+     </Link>
+     
+ </div>
+     </div>
+         ))}
 
-    </div>
-
-
+ </div>
     )
 }
-
-export default CardDetail;

@@ -1,6 +1,3 @@
-// Importa las action types acá
-//import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL} from '../actions/index'
-
 const initialState = {
   countries: [],
   countriesApi:[],
@@ -17,14 +14,31 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case 'GET_ALL_COUNTRIES':
       return{
         ...state,
-        countries: payload
+        countries: payload,
+        countriesApi: payload
       }
     case 'GET_COUNTRY_DETAIL':
       return{
         ...state,
         detail: payload
-      }/*
-    case CREATE_PRODUCT:
+      }
+    case 'GET_COUNTRIES_NAME':
+      return{
+        ...state,
+        countriesApi: payload
+      }
+    case 'ADD_ACTIVITY':
+      return{
+        ...state, 
+        actividad: payload
+      }   
+    case 'GET_ACTIVITY':
+      return{
+        ...state,
+        actividad: payload
+      }  
+
+    /*case CREATE_PRODUCT:
       return{
         ...state,
         countries: [...state.countries,action.payload]
