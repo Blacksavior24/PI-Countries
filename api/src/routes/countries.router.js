@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const {getApiInfo, getDbInfo} = require('./services/countries.services');
-const {Op} = require('sequelize')
+const {Country, Activity} = require('../db')
 
 const router = Router();
 

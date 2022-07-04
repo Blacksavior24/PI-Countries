@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { obteneractividades,borraractividades } = require('./services/activities.services.js')
+const { ActInfo } = require('./services/activities.services.js')
 const {Activity, Country} = require('../db');
 const router = Router();
 
@@ -31,7 +31,7 @@ router.post("/", async function (req,res){
     }
 })
 
-server.get('/', async function (req, res){
+router.get('/', async function (req, res){
     const act = await ActInfo()
     console.log(act)
     res.status(200).send(act)

@@ -12,9 +12,9 @@ const getApiInfo = async () =>{
            flag: country.flags[0],
            continent: country.continents[0],
            capital: country.capital?.[0] ,
-           subregion: country.subregion,
-           area: country.area,
-           poblation: country.population,
+           subregion: country.subregion? country.subregion:'No tiene',
+           area: country.area? country.area:'No tiene',
+           poblation: country.population?country.population:0,
         }
     });
     const result = await Country.bulkCreate(api)
