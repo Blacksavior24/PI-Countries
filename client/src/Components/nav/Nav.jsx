@@ -6,6 +6,7 @@ export default class Nav extends Component {
         return (
             <div>
               <Link to="/">Home</Link>
+              <Link to='/countries'>Paises</Link>
               <Link to="/activity/create">
                 <button>Crear Actividad</button>
                 </Link>
