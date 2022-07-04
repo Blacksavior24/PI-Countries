@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 //import './countries.css'
 import { getActivity, getAllCountries} from '../../redux/actions/index';
-//import Paginado from '../Paginado/Paginado'
+import Pagination from '../pagination/Pagination'
 
 export const Countries = () => {
     const dispatch = useDispatch()
@@ -40,7 +40,10 @@ export const Countries = () => {
          
         }
          </div>
-         
+         <Pagination 
+          counPerPage={counPerPage}
+          paginate = {paginate}
+         />
      
         </div>
         

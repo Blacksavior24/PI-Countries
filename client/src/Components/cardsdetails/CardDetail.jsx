@@ -40,6 +40,9 @@ export default function CardDetail (props){
                  <h4> Continent: {e.continent}</h4>
              </div>
              <div className='container'>
+                 <h4> Subregion: {e.subregion}</h4>
+             </div>
+             <div className='container'>
                  <h4> Codigo: {e.id}</h4>
              </div>
              <div className='container'>

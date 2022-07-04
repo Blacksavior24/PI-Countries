@@ -1,0 +1,16 @@
+.paginado{
+    display: flex;
+    justify-content: space-around;
+    background-color: red;
+    color: white;
+    list-style:none;
+    cursor: pointer;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.sal:hover{
+    background-color: rgb(92, 131, 91);
+    color: black;
+}
