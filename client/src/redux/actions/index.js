@@ -68,3 +68,65 @@ export  function getActivity (){
       }
   }
 };
+
+
+export function filterActivity (payload){
+  return async function (dispatch){
+      try{
+          return dispatch({type:'FILTER_ACTIVITY', payload})
+      }
+      catch(err){
+          console.log('filterActivity ERROR____:',err)
+      }
+  }
+};
+
+export function getContinents (payload){
+  return async function(dispatch){
+      try{
+       return dispatch({type:'GET_CONTINENTS', payload})
+      }
+      catch(err){
+      //console.log(err)
+      }
+  }
+};
+
+export const orderAZ = () => { 
+  return  function (dispatch){
+      dispatch({type:'LOADING', payload: true})
+      return dispatch({type:'ORDER_AZ'})
+}
+};
+
+
+export const orderZA = () => {
+  return  function (dispatch){
+          dispatch({type:'LOADING', payload: true})
+          return dispatch({type: 'ORDER_ZA'})
+      }
+};
+
+export const poblaMayor = () => {
+  return  function (dispatch){
+    dispatch({type:'LOADING', payload: true})
+    return dispatch({type: 'MAYOR_POBLACION'})
+  }
+};
+
+export const poblaMenor = () =>{
+  return  function (dispatch){
+    dispatch({type:'LOADING', payload: true})
+    return dispatch({type: 'MENOR_POBLACION'})
+  }
+};
+
+
+export const filterName = (name) => () => {
+  return ({
+      type: 'FILTER_NAME',
+      payload: name,
+      }
+
+  )
+};

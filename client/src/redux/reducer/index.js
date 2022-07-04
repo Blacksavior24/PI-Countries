@@ -1,3 +1,5 @@
+import {compareAZ, compareZA, MayorPoblacion, MenorPoblacion} from './filtrado'
+
 const initialState = {
   countries: [],
   countriesApi:[],
@@ -37,7 +39,15 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         actividad: payload
       }  
-
+    case 'GET_CONTINENTS':
+      const allcountries = state.countries
+      const filtro = payload === 'All' ? 
+      allcountries:
+      allcountries.filter(c => c.continent === payload)
+        return{
+          ...state,
+          countriesApi: filtro
+      }
     /*case CREATE_PRODUCT:
       return{
         ...state,
