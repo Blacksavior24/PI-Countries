@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {getCountryDetail} from '../../redux/actions/index';
+import './country.css'
 
 export default function Country({ id,name, flag,  continent, poblation}) {
   const dispatch = useDispatch()

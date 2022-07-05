@@ -48,6 +48,48 @@ const rootReducer = (state = initialState, {type, payload}) => {
           ...state,
           countriesApi: filtro
       }
+    case 'ORDER_AZ':
+        return{
+        ...state,
+        countriesApi: state.countriesApi.sort(compareAZ), 
+        loading: false
+          
+    };
+    case 'ORDER_ZA':
+        return{
+        ...state, 
+        countriesApi: state.countriesApi.sort(compareZA), 
+        loading: false   
+    };
+    case 'MAYOR_POBLACION':
+        return{
+            ...state, 
+            countriesApi: state.countriesApi.sort(MayorPoblacion), 
+            loading: false     
+    };
+    case 'MENOR_POBLACION':
+        return{
+            ...state, 
+            countriesApi: state.countriesApi.sort(MenorPoblacion), 
+            loading: false    
+    };
+    case 'LOADING':
+        return{
+             ...state,
+             loading: payload
+    };
+
+    case 'FILTER_ACTIVITY':
+      const activitiesbycountries = state.actividad
+      const countriesAll = state.countries
+      console.log("FILTER_ACTIVITY - activitiesbycountries****************: " , activitiesbycountries)
+             
+      const filt = payload === 'todos' ? countriesAll : activitiesbycountries.filter(a=> a.name === payload)[0].countries.map(e => e)
+      console.log("FILT_____:", filt)
+      return{
+            ...state,
+            countriesApi: filt
+    };
     /*case CREATE_PRODUCT:
       return{
         ...state,

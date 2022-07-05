@@ -2,7 +2,7 @@ import Nav from '../nav/Nav'
 import Country from '../country/Country'
 import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-//import './countries.css'
+import './countries.css'
 import { getActivity, getAllCountries} from '../../redux/actions/index';
 import Pagination from '../pagination/Pagination'
 
@@ -29,8 +29,8 @@ export const Countries = () => {
     return(
         
         <div className="home">
-   
-        <div className="container">
+            <h1>Countries</h1>
+        <div className="container__countries">
         {
          currentCountries?.map (e => {
              return(

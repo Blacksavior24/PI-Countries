@@ -11,7 +11,7 @@ export default function Pagination ({counPerPage, paginate}) {
         <div className= 'paginado'>
         { pageNumbers &&
         pageNumbers.map(number => (
-            <li>
+            <li className="lista__paginada">
                 <a className="sal" onClick={() => paginate(number)} >{number}</a>
             </li>
         ))}
