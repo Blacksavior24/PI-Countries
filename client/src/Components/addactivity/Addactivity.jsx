@@ -72,29 +72,29 @@ function handleSelect(e) {
             <form className="container-post" onSubmit ={handleSubmit}>
                 <label htmlFor="countries">
                     <select className="label__container" name="countries" id="countries" onChange={handleSelect} required>
-                        <option value="" > Select </option>
+                        <option value="" > Select a country: </option>
                         {paises.map(e => ( <option value={e.id}> {e.name} {e.id} </option>) ) }
                     </select>
                 </label>
                 <label htmlFor="name"  onChange={handleChange}>
-                    <input type="text" placeholder="name" name="name" className="input" value={activities.name} required/>
+                    <input type="text" placeholder="Write an activity" name="name" className="input--select" value={activities.name} required/>
                 </label>
                 <div className="cuadros">
                 <label htmlFor="season">
-                    <select type="text" name="season"  onChange={handleChange} required>
+                    <select type="text" name="season"  onChange={handleChange} required className="select--boton" >
                         <option value="" > Season </option>
                         { ['Invierno', 'Primavera', 'Otoño', 'Verano' ].map(e => ( <option value={e}>  {e} </option> )) }
                     </select> 
                 </label>
                 <label htmlFor="difficulty">
-                    <select type="text" name="difficulty" onChange={handleChange} required>
+                    <select type="text" name="difficulty" onChange={handleChange} required className="select--boton">
                         <option value=""  > Difficulty </option>
                         { [1, 2, 3, 4, 5 ].map(e => ( <option value={e}> {e} </option> )) }
                     </select> 
                 </label>
                 </div>
                 <label htmlFor="duration" onChange={handleChange}>
-                    <input type="number" placeholder="duration in hours.." name="duration" className="input"  value={activities.duration }  required /> 
+                    <input type="number" placeholder="duration in hours.." name="duration" className="input--selto"  value={activities.duration }  required/> 
                 </label>
 
                     { <div>

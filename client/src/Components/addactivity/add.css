@@ -37,10 +37,7 @@ h2{
           font-weight:bold;
           margin-top:12px;
         }
-        .input{
-          outline:none;
-          height:30px;
-        }
+
         .btn-submit{
           width:25%;
           margin:auto;
@@ -99,3 +96,21 @@ h2{
     justify-content: space-around;
     width: 100%;
   }
+.select--boton{
+    border-radius: 50px;
+    width: 80px;
+    height: 40px;
+    background-color: grey;
+}
+.input--select{
+    border-radius: 35px;
+    width: 35%;
+    outline:none;
+    height:30px;
+}
+.input--selto{
+    border-radius: 35px;
+    width: 20%;
+    outline:none;
+    height:30px;
+}
