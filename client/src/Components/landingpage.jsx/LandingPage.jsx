@@ -1,16 +1,14 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import './landing.css'
 
 export default function LandingPage(){
     return(
-        <div>
+        <div className="landing">
             <h1>Welcome ^-^</h1>
-            <img src='https://dbdzm869oupei.cloudfront.net/img/quadres/preview/40450.png'
-            alt='Mapa-mundi'
-            />
             <p>Ingresé para ver los paises</p>
             <Link to='/countries'>
-                <button>Ingresar</button>
+                <button className="boton">Ingresar</button>
             </Link>
         </div>
     )

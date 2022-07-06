@@ -11,7 +11,7 @@ export default function Country({ id,name, flag,  continent, poblation}) {
       <div className='card' key={id} onClick={ () => dispatch(getCountryDetail(id))}>
           <h4 className='name'> {name} </h4>
           <h5 className='name'> {continent} </h5>
-          <h5 className='name'> {poblation} </h5>
+          <h5 className='name'> Poblation: {poblation} </h5>
           <img src={flag} alt="imagen no encontrada" width='145px' height='145px' className='image' />
       </div>
           </Link>        

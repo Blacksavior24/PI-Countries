@@ -3,8 +3,9 @@
     height:500px;
     width:50%;
     margin: 15px auto;
-    background-color: black;
-    box-shadow: 0 6rem 6rem 0 rgba(0, 0, 5, 5);
+    margin-top: 10%;
+    background-color: #706565;
+    box-shadow: 0 6rem 6rem 0 rgba(84, 65, 65, 0.5);
     background-position: center center;
     background-size:cover;
     background-attachment: fixed;
@@ -12,7 +13,10 @@
     text-align: center;
     }
 h2{
+    padding-top: 4%;
     color: aliceblue;
+    font-size: 50px;
+    font-weight: 900;
 }
 .container-post{
     margin-top:20px;
@@ -41,10 +45,12 @@ h2{
           width:25%;
           margin:auto;
           margin-top:10px;
+          margin-right: 35px;
           padding:10px;
           border: 1px transparent;
+          border-radius: 75px;
           outline:none;
-          background-color:black;
+          background-color:green;
           color:white;
           font-weight:bold;
           font-size: 16px;
@@ -58,10 +64,12 @@ h2{
           margin:auto;
           font-size: 16px;
           margin-top:10px;
+          margin-left: 35px;
           padding:10px;
           border: 1px transparent;
+          border-radius: 50px;  
           outline:none;
-          background-color: black;
+          background-color: #ea4335;
           color:white;
           cursor: pointer;
           }
@@ -72,12 +80,22 @@ h2{
   }
   .X{
     cursor: pointer;
+    border-radius: 25px;
+    border-style: outset;
   }
   .btn-atras:hover{
-    background-color: white;
-    color: black;
+    background-color: #202124;
+    color: white;
   }
   .btn-submit:hover{
-    background-color: white;
     color: black;
+  }
+  .label__container{
+    padding: 10px;
+    border-radius: 25px;
+  }
+  .cuadros{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
   }

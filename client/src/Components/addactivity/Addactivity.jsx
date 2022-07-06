@@ -66,11 +66,12 @@ function handleSelect(e) {
     }
     
         return(
+        <div className="pruebas">
         <div className="post">
             <h2> Create your Activity! </h2>
             <form className="container-post" onSubmit ={handleSubmit}>
                 <label htmlFor="countries">
-                    <select name="countries" id="countries" onChange={handleSelect} required>
+                    <select className="label__container" name="countries" id="countries" onChange={handleSelect} required>
                         <option value="" > Select </option>
                         {paises.map(e => ( <option value={e.id}> {e.name} {e.id} </option>) ) }
                     </select>
@@ -78,10 +79,11 @@ function handleSelect(e) {
                 <label htmlFor="name"  onChange={handleChange}>
                     <input type="text" placeholder="name" name="name" className="input" value={activities.name} required/>
                 </label>
+                <div className="cuadros">
                 <label htmlFor="season">
                     <select type="text" name="season"  onChange={handleChange} required>
                         <option value="" > Season </option>
-                        { ['Winter', 'Spring', 'Autumn', 'Summer' ].map(e => ( <option value={e}>  {e} </option> )) }
+                        { ['Invierno', 'Primavera', 'Otoño', 'Verano' ].map(e => ( <option value={e}>  {e} </option> )) }
                     </select> 
                 </label>
                 <label htmlFor="difficulty">
@@ -90,6 +92,7 @@ function handleSelect(e) {
                         { [1, 2, 3, 4, 5 ].map(e => ( <option value={e}> {e} </option> )) }
                     </select> 
                 </label>
+                </div>
                 <label htmlFor="duration" onChange={handleChange}>
                     <input type="number" placeholder="duration in hours.." name="duration" className="input"  value={activities.duration }  required /> 
                 </label>
@@ -102,13 +105,14 @@ function handleSelect(e) {
                         <ul className="pais-seleccionado" onChange={handleSelect}>  
                              {activities.idCountry.map(e => (<li key={e}> {e} <button className="X" onClick={()=> deleteId(e)} > X </button> </li> ) )} 
                         </ul> : null }
-               <div>
+               <div className="btn-div">
                     <button type="submit" className="btn-submit">Add New Activity</button>
                 <Link to='/countries'>
                     <button className='btn-atras'>Back</button> 
                 </Link>
                 </div>
             </form>
+        </div>
         </div>
     )
 }

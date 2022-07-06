@@ -39,3 +39,12 @@
     background-color: green;
     color: black;
 }
+.pruebas{
+    background-image: url(https://dbdzm869oupei.cloudfront.net/img/quadres/preview/40450.png);
+    background-position: center center;
+    background-size:cover;
+    background-attachment: fixed;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
