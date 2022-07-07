@@ -17,6 +17,14 @@ describe('Country model', () => {
       it('should work when its a valid name', () => {
         Country.create({ name: 'Argentina' });
       });
+      it('Should NOT create a country without id, image, continent, capital: ', done => {
+        Country.create({
+            name: 'Mexico'
+        })
+          .then(() => done("It shouldn't be created"))
+          .catch(() => done());
+      });
+      
     });
   });
 });

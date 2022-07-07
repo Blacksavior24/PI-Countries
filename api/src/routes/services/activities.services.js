@@ -8,9 +8,6 @@ const ActInfo = async() => {
     })
 }
 
-
-    
-
 module.exports = {
     ActInfo
 };
